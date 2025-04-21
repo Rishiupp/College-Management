@@ -17,7 +17,7 @@ const videos: Video[] = [
     title: 'Morning Yoga Routine',
     description: '20-minute energizing yoga flow to start your day',
     thumbnail: 'https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=300',
-    youtubeId: 'dQw4w9WgXcQ',
+    youtubeId: 'v9LsMHvwQds',
     category: 'yoga'
   },
   {
