@@ -25,7 +25,7 @@ const videos: Video[] = [
     title: 'Full Body Workout',
     description: 'No equipment needed - 30-minute intense workout',
     thumbnail: 'https://images.pexels.com/photos/4162487/pexels-photo-4162487.jpeg?auto=compress&cs=tinysrgb&w=300',
-    youtubeId: 'dQw4w9WgXcQ',
+    youtubeId: 'oKPAqY2OovY',
     category: 'gym'
   },
   {
@@ -33,7 +33,7 @@ const videos: Video[] = [
     title: 'Mindset for Success',
     description: 'Transform your mindset and achieve your goals',
     thumbnail: 'https://images.pexels.com/photos/3758104/pexels-photo-3758104.jpeg?auto=compress&cs=tinysrgb&w=300',
-    youtubeId: 'dQw4w9WgXcQ',
+    youtubeId: 'oKPAqY2OovY',
     category: 'motivation'
   }
 ];
