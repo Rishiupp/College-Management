@@ -15,6 +15,7 @@ app.use(express.json());
 
 const connectDB = async () => {
   try {
+    
     console.log('MongoDB would connect here in production');
     
     await mongoose.connect(process.env.MONGODB_URI);
@@ -24,6 +25,8 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
+
+// Models
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -45,6 +48,10 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
+// User model would be created like this in production:
+const User = mongoose.model('User', UserSchema);
+
+// Mock user data for development
 const mockUsers = [
   {
     _id: '1',
@@ -53,6 +60,7 @@ const mockUsers = [
     password: bcrypt.hashSync('password123', 10)
   }
 ];
+
 app.post('/api/auth/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -63,8 +71,10 @@ app.post('/api/auth/register', async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
     
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
     
+    // Create new user
     const newUser = {
       _id: Date.now().toString(),
       username,
@@ -73,9 +83,10 @@ app.post('/api/auth/register', async (req, res) => {
     };
     
     const user = await User.create({ username, email, password: hashedPassword });
-
+    
     mockUsers.push(newUser);
     
+    // Create JWT
     const token = jwt.sign(
       { id: newUser._id },
       'jwtSecretKey', 
@@ -135,6 +146,7 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 const startServer = async () => {
+  await connectDB();
   
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
